@@ -61,7 +61,7 @@ for( var i = 0; i < lines1.length + 1; i++ )
             if( lines1[ i - 1 ] == lines2[ j - 1 ] )
             {
                 cell.penalty = Math.min( left_up,
-                                         data[ i - 1 ][ j - 1 ].penalty );
+                  data[ i - 1 ][ j - 1 ].penalty );
             }
             else
             {
@@ -115,18 +115,18 @@ for( var i = 0; i < data.length; i++ )
     {
         if( row[j].best_align )
         {
-            process.stdout.write( "*" );
+            //process.stdout.write( "*" );
             count++;
             diffs2.push(lines2[j]);
             if(losscheck == j){
               plusses.push("+ " + lines1[i - 1]);
-              console.log(lines1[i - 1]);
+              //console.log(lines1[i - 1]);
             }
             losscheck = j;
         }
         else
         {
-            process.stdout.write( "-" );
+          //  process.stdout.write( "-" );
         }
 
     }
@@ -135,7 +135,7 @@ for( var i = 0; i < data.length; i++ )
         minuses.push("- " + diffs2[n]);
       }
     }
-    console.log("");
+    //console.log("");
 }
 
 for( var i = 0; i < minuses.length; i++){
