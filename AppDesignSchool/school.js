@@ -190,12 +190,12 @@ function serverFn( req, res )
 
 var server = http.createServer( serverFn );
 
-if (process.argv.length<3)
+if (process.argv.length<3){
     server.listen( 8080 );
 }
-else if (!numtest.test(process.argv.length[2])){
+else if (numtest.test(process.argv[2]) == false){
     server.listen (8080);
 }
 else{
-    server.listen(process.argv.length[2]);
+    server.listen(process.argv[2]);
 }
