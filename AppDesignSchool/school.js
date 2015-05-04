@@ -2,6 +2,7 @@ var fs = require( "fs" );
 var http = require( "http" );
 var sqlite = require( "sqlite3" );
 var table = [];
+var numtest = /^\d+$/;
 
 function makeTable(num)
 {
@@ -51,7 +52,6 @@ function addStudent( req, res, info )
       for(var i = 0; i < splits.length; i++){
           inform.push(splits[i].split("=")[1]);
       }
-      var numtest = /^\d+$/;
       if(numtest.test(inform[1])){
           var db = new sqlite.Database("school.sqlite");
           var sql_cmd = "INSERT INTO STUDENTS ('NAME', 'YEAR') VALUES ('"+
@@ -190,4 +190,12 @@ function serverFn( req, res )
 
 var server = http.createServer( serverFn );
 
-server.listen( 12121 );
+if (process.argv.length<3)
+    server.listen( 8080 );
+}
+else if (!numtest.test(process.argv.length[2])){
+    server.listen (8080);
+}
+else{
+    server.listen(process.argv.length[2]);
+}
